@@ -1,5 +1,5 @@
 /**
- * @author Ólafur Sverrir Kjartansson 
+ * @author Ólafur Sverrir Kjartansson
  */
 
 module.exports = function cors(req, res, next) {

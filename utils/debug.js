@@ -1,8 +1,8 @@
 /**
- * @author Ólafur Sverrir Kjartansson 
+ * @author Ólafur Sverrir Kjartansson
  */
 
- const {
+const {
   DEBUG = false,
 } = process.env;
 

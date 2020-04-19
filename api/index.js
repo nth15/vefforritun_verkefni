@@ -7,4 +7,12 @@ const requireAdmin = [
   checkUserIsAdmin,
 ];
 
+const router = express.Router();
+
+function indexRoute(req, res) {
+
+}
+
+router.get('/', indexRoute);
+
 module.exports = router;

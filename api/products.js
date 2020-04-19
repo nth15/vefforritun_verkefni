@@ -23,5 +23,5 @@ const {
 
 
 module.exports = {
-  
+
 };

@@ -1,5 +1,5 @@
 /**
- * @author Ólafur Sverrir Kjartansson 
+ * @author Ólafur Sverrir Kjartansson
  */
 
 function isEmpty(s) {

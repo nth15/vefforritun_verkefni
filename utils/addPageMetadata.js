@@ -1,5 +1,5 @@
 /**
- * @author Ólafur Sverrir Kjartansson 
+ * @author Ólafur Sverrir Kjartansson
  */
 
 const { toPositiveNumberOrDefault } = require('./validation');
