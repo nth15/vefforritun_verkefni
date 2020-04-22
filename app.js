@@ -4,7 +4,7 @@ const express = require('express');
 
 const requireEnv = require('./utils/requireEnv');
 
-requireEnv(['DATABASE_URL', 'CLOUDINARY_URL', 'JWT_SECRET']);
+requireEnv(['DATABASE_URL', 'JWT_SECRET']);
 
 const auth = require('./authentication/auth');
 const api = require('./api');
