@@ -4,7 +4,6 @@
 
 ## Table of contents
 - [Almennt](#almennt)
-- [Myndir](#myndir)
 - [Tækni](#tækni)
 - [Uppsetning](#uppsetning)
 - [Höfundur](#höfundur)
@@ -17,8 +16,7 @@
 ├── authentication     # Staðfestir notenda
 ├── data               # 
 ├── img                # Myndir
-├── sql                # postgresql skipanir búa til töflur 
-│                        og setja inn viðeigandi gögn
+├── sql                # postgresql skipanir búa til töflur og setja inn viðeigandi gögn
 ├── utils              #
 ├── app.js             # Keyrir upp netþjóninn
 ├── package.json       # Pakkar sem að þarf til að keyra kóðan
@@ -26,10 +24,32 @@
 ├── README.md
 └── setup.js`          # Setur upp gagnagrunninn
 ```
-
-## Myndir
+```
+├── api
+│   ├── categories.js
+│   ├── index.js       # Sér um Routes
+│   ├── orders.js
+│   ├── products.js
+│   └── users.js
+├── ...
+```
 
 ## Tækni
+
+- Gagnagrunnur: [Postgresql 11.7](https://www.postgresql.org/)
+- Hýst á: [Heroku](https://www.heroku.com/)
+   - api: 
+### Node
+- [bcrypt](https://github.com/kelektiv/node.bcrypt.js)
+- [dotenv](https://github.com/motdotla/dotenv)
+- [express](https://github.com/expressjs/express)
+- [faker]()
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
+- [multer](https://github.com/expressjs/multer)
+- [passport](https://github.com/jaredhanson/passport)
+- [passport-jwt](https://github.com/mikenicholson/passport-jwt)
+- [pg](https://github.com/brianc/node-postgres)
+- [xss](https://github.com/leizongmin/js-xss)
 
 
 ## Uppsetning
