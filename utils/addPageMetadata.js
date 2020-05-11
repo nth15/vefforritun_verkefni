@@ -23,7 +23,7 @@ function addPageMetadata(
   const limitAsNumber = toPositiveNumberOrDefault(limit, 10);
   const lengthAsNumber = toPositiveNumberOrDefault(length, 0);
 
-  const newObj = Object.assign({}, obj);
+  const newObj = { ...obj };
 
   const url = new URL(path, baseUrl || `http://${host}`);
 

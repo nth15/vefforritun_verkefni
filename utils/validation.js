@@ -1,48 +1,22 @@
-/**
- * @author Ólafur Sverrir Kjartansson
- */
-
 function isEmpty(s) {
   return s != null && !s;
 }
 
 function isInt(i) {
-  return i !== '' && Number.isInteger(Number(i));
+  // eslint-disable-next-line no-restricted-globals
+  return !isNaN(i) && Number.isInteger(Number(i));
 }
 
 function isString(s) {
   return typeof s === 'string';
 }
 
-function isBoolean(b) {
-  return typeof b === 'boolean';
+function isNotEmptyString(s) {
+  return !isEmpty(s) && isString(s);
 }
 
-function lengthValidationError(s, min, max) {
-  const length = s && s.length ? s.length : 'undefined';
-
-  const minMsg = min ? `at least ${min} characters` : '';
-  const maxMsg = max ? `at most ${max} characters` : '';
-  const msg = [minMsg, maxMsg].filter(Boolean).join(', ');
-  const lenMsg = `Current length is ${length}.`;
-
-  return `Must be non empty string ${msg}. ${lenMsg}`;
-}
-
-function isNotEmptyString(s, { min = undefined, max = undefined } = {}) {
-  if (typeof s !== 'string' || s.length === 0) {
-    return false;
-  }
-
-  if (max && s.length > max) {
-    return false;
-  }
-
-  if (min && s.length < min) {
-    return false;
-  }
-
-  return true;
+function lengthValidation(s, min, max) {
+  return isNotEmptyString(s) && s.length > min && s.length < max;
 }
 
 function toPositiveNumberOrDefault(value, defaultValue) {
@@ -54,10 +28,9 @@ function toPositiveNumberOrDefault(value, defaultValue) {
 
 module.exports = {
   isEmpty,
-  isString,
-  isBoolean,
   isInt,
+  isString,
   isNotEmptyString,
+  lengthValidation,
   toPositiveNumberOrDefault,
-  lengthValidationError,
 };

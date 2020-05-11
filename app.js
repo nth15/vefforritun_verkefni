@@ -8,7 +8,6 @@ requireEnv(['DATABASE_URL', 'JWT_SECRET']);
 
 const auth = require('./authentication/auth');
 const api = require('./api');
-const cors = require('./utils/cors');
 
 const {
   PORT: port = 3000,
@@ -17,9 +16,6 @@ const {
 
 const app = express();
 app.use(express.json());
-
-// CORS til að geta gert ajax beiðnir frá öðrum serverum
-app.use(cors);
 
 app.use(auth);
 app.use('/', api);

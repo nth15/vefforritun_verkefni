@@ -2,10 +2,10 @@
  * @author Ólafur Sverrir Kjartansson
  */
 
- const { Client } = require('pg');
+const { Client } = require('pg');
 
 const debug = require('./debug');
-const { toPositiveNumberOrDefault } = require('../utils/validation');
+const { toPositiveNumberOrDefault } = require('./validation');
 
 /**
  * Execute an SQL query.
@@ -25,6 +25,7 @@ async function query(sqlQuery, values = []) {
 
   try {
     result = await client.query(sqlQuery, values);
+  // eslint-disable-next-line no-useless-catch
   } catch (err) {
     throw err;
   } finally {
@@ -60,10 +61,10 @@ async function pagedQuery(
 }
 
 async function conditionalUpdate(table, id, fields, values) {
-  const filteredFields = fields.filter(i => typeof i === 'string');
+  const filteredFields = fields.filter((i) => typeof i === 'string');
   const filteredValues = values
     .filter(
-      i => typeof i === 'string' ||
+      (i) => typeof i === 'string' ||
       typeof i === 'number' ||
       i instanceof Date,
     );

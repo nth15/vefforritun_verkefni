@@ -1,9 +1,6 @@
 /**
  * Setur upp gagnagrunn og gögn fyrir verkefni.
  * Byrjar á að henda *öllu* sem er nú þegar til og býr til frá grunni.
- *
- * TODO ekki hreinsa gagnagrunn ef við sjáum að fjöldi flokka eða vara er meiri
- * en það sem við ætlum að búa til.
  */
 
 require('dotenv').config();
