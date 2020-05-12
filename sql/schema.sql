@@ -28,14 +28,15 @@ CREATE TABLE users (
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   name VARCHAR(256),
+  totalPrice INTEGER NOT NULL CHECK (totalPrice > 0),
   order_created TIMESTAMP WITH TIME ZONE,
-  order_submitted BOOLEAN DEFAULT false,
+  order_processed BOOLEAN DEFAULT false,
   user_id INTEGER REFERENCES users(id) NOT NULL,
   created TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp,
   updated TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp
 );
 
-CREATE TABLE order_lines (
+CREATE TABLE orderLines (
   id SERIAL PRIMARY KEY,
   quantity INTEGER CHECK (quantity > 0),
   product_id INTEGER REFERENCES products(id) NOT NULL,

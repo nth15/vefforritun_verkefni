@@ -75,17 +75,14 @@ async function checkUserIsAdmin(req, res, next) {
 
 async function registerRoute(req, res) {
   const { username, password, email } = req.body;
-
   const validationMessage =
-    await users.validateUser({ username, password, email });
+    await users.validateUser(username, password, email);
 
   if (validationMessage.length > 0) {
     return res.status(400).json({ errors: validationMessage });
   }
 
   const result = await users.createUser(username, password, email);
-
-  delete result.password;
 
   return res.status(201).json(result);
 }

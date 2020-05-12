@@ -1,3 +1,7 @@
+/**
+ * @author Ólafur Sverrir Kjartansson
+ */
+
 require('dotenv').config();
 
 const express = require('express');

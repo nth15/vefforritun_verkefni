@@ -10,20 +10,13 @@ const util = require('util');
 
 const requireEnv = require('./utils/requireEnv');
 const { query } = require('./utils/db');
-// const {
-//   // TODO
-// } = require('./data');
+
 
 const readFileAsync = util.promisify(fs.readFile);
 
 requireEnv(['DATABASE_URL']);
 
-const {
-  DATABASE_URL: databaseUrl,
-  // NUMBER_OF_FAKE_CATEGORIES: numberOfFakeCategories = 12,
-  // NUMBER_OF_FAKE_PRODUCTS: numberOfFakeProducts = 100,
-  // IMAGE_FOLDER: imageFolder = './img',
-} = process.env;
+const { DATABASE_URL: databaseUrl } = process.env;
 
 async function main() {
   console.info(`Set upp gagnagrunn á ${databaseUrl}`);
@@ -58,20 +51,15 @@ async function main() {
     return;
   }
 
-  // búa til gervigögn og setja í gagnagrunn
-  // try {
-  //   const categories = await createFakeCategories(numberOfFakeCategories);
-  //   const products =
-  //     await createFakeProducts(numberOfFakeProducts, categories);
-
-  //   const cats = categories.length;
-  //   const prods = products.length;
-
-  //   console.info(`Bjó til ${cats} flokka og ${prods} vörur.`);
-  // } catch (e) {
-  //   console.error('Villa við að búa til gervigögn:', e.message);
-  //   return;
-  // }
+  // búa til flokka og vörur
+  try {
+    const createData = await readFileAsync('./sql/insert-products.sql');
+    await query(createData.toString('utf8'));
+    console.info('Vörur búnar til');
+  } catch (e) {
+    console.error('Villa við að búa til vörur:', e.message);
+    return;
+  }
 
   // búa til pantanir og körfu
   try {

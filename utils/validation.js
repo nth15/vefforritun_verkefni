@@ -1,3 +1,5 @@
+const validator = require('validator');
+
 function isEmpty(s) {
   return s != null && !s;
 }
@@ -15,8 +17,12 @@ function isNotEmptyString(s) {
   return !isEmpty(s) && isString(s);
 }
 
+function isEmail(s) {
+  return validator.isEmail(s);
+}
+
 function lengthValidation(s, min, max) {
-  return isNotEmptyString(s) && s.length > min && s.length < max;
+  return isNotEmptyString(s) && s.length >= min && s.length < max;
 }
 
 function toPositiveNumberOrDefault(value, defaultValue) {
@@ -31,6 +37,7 @@ module.exports = {
   isInt,
   isString,
   isNotEmptyString,
+  isEmail,
   lengthValidation,
   toPositiveNumberOrDefault,
 };

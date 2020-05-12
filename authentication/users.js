@@ -4,6 +4,8 @@ const xss = require('xss');
 const {
   isInt,
   lengthValidation,
+  isEmpty,
+  isEmail,
 } = require('../utils/validation');
 const { query } = require('../utils/db');
 
@@ -39,16 +41,17 @@ async function findByUsername(username) {
  *
  * @param  {String} username
  * @param  {String} password
- * @return {}
+ * @return {array}  If valid return empty array
+ *                  If not empty returns errors
  */
-async function validateUser(username, password) {
+async function validateUser(username, password, email) {
   const errors = [];
-
   if (!lengthValidation(username, 6, 30)) {
     errors.push('Notendanafn þarf að vera 6-20 stafir');
   }
 
   const user = await findByUsername(username);
+
   if (user) {
     errors.push('Notendanafn er þegar skráð');
   }
@@ -57,6 +60,12 @@ async function validateUser(username, password) {
   }
   if (badPasswords.includes(password)) {
     errors.push('Ekki nógu gott lykilorð');
+  }
+  if (isEmpty(email)) {
+    errors.push('Email má ekki vera tómt');
+  }
+  if (!isEmail(email)) {
+    errors.push('Ekki alvöru email');
   }
 
   return errors;
@@ -103,12 +112,16 @@ async function createUser(username, password, email) {
 
   const q = `
   INSERT INTO
-    users (username, password, email)
-  VALUES ($1, $2 $4)`;
+    users (username, email, password, admin)
+  VALUES
+    ($1, $2, $3, $4)
+  RETURNING username, email, admin, created`;
 
-  const values = [xss(username), hashedPassword, xss(email)];
-  const result = await query(q, values);
-
+  const values = [xss(username), xss(email), hashedPassword, false];
+  const result = await query(
+    q,
+    values,
+  );
   return result.rows[0];
 }
 
