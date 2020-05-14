@@ -12,15 +12,18 @@ requireEnv(['DATABASE_URL', 'JWT_SECRET']);
 
 const auth = require('./authentication/auth');
 const api = require('./api');
+const cors = require('./utils/cors');
+
 
 const {
   PORT: port = 3000,
   HOST: host = '127.0.0.1',
-  
 } = process.env;
 
 const app = express();
 app.use(express.json());
+
+app.use(cors);
 
 app.use(auth);
 app.use('/', api);
