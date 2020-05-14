@@ -14,11 +14,11 @@ const {
 
 const {
   listAllOrders,
-  getOrders,
-  submitOrder,
 } = require('./orders');
 
-
+const {
+  getProducts,
+} = require('./products');
 
 const router = express.Router();
 
@@ -31,6 +31,9 @@ function indexRoute(req, res) {
       login: '/users/login',
       me: '/users/me',
     },
+    products: {
+      products: '/products',
+    },
   });
 }
 
@@ -39,6 +42,7 @@ router.get('/', indexRoute);
 router.get('/users', requireAdmin, catchErrors(listUsers));
 
 router.get('/orders/all', requireAdmin, catchErrors(listAllOrders));
-router.get('/orders', requireAuthentication, catchErrors(getOrders));
+//router.get('/orders', requireAuthentication, catchErrors(getOrders));
+router.get('/products', catchErrors(getProducts));
 
 module.exports = router;

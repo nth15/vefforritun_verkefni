@@ -66,5 +66,4 @@ async function createOrder(req, res) {
 module.exports = {
   listAllOrders,
   getOrders,
-  getOrder,
 };
