@@ -6,18 +6,42 @@ INSERT INTO
   products
     (id, title, price, description, category_id)
   VALUES
-    (5, 'Margherita ', 1200, 'Svaka gott', 1);
+    (5, 'Margherita ', 1200, 'Sósa og ostur', 1);
+
+INSERT INTO
+  products
+    (id, title, price, description, category_id)
+  VALUES
+    (6, 'Pepporoni ', 1300, 'Sósa, ostur og pepperoni', 1);
+
+INSERT INTO
+  products
+    (id, title, price, description, category_id)
+  VALUES
+    (7, 'hawaii ', 1300, 'Sósa, ostur, skinka og anannas', 1);
 
 
 INSERT INTO
   products
     (id, title, price, description, category_id)
   VALUES
-    (6, 'Ostborgari ', 1400, 'Mjög gott', 2);
+    (6, 'Ostborgari ', 1400, 'Kál sósa ostur', 2);
+
+INSERT INTO
+  products
+    (id, title, price, description, category_id)
+  VALUES
+    (7, 'Beikonborgari ', 1500, 'Kál, sósa, ostur og beikon ', 2);
 
 
 INSERT INTO
   products
     (id, title, price, description, category_id)
   VALUES
-    (7, 'Carlsberg ', 1200, 'Kannski besti bjór í heimi', 3);
+    (8, 'Carlsberg', 1200, 'Kannski besti bjór í heimi', 3);
+
+INSERT INTO
+  products
+    (id, title, price, description, category_id)
+  VALUES
+    (9, 'Pepsimax', 400, 'Sykurlaust!', 3);

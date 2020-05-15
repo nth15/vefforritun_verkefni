@@ -1,3 +1,4 @@
+const xss = require('xss');
 const { query, pagedQuery } = require('../utils/db');
 const addPageMetadata = require('../utils/addPageMetadata');
 
@@ -47,7 +48,7 @@ async function getOrders(req, res) {
 }
 
 async function createOrder(req, res) {
-
+  const { name, totalPrice} = req.body;
   const q = `
   INSERT INTO
     orders (name, totalPrice)

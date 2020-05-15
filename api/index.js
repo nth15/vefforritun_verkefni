@@ -45,6 +45,6 @@ router.get('/users', requireAdmin, catchErrors(listUsers));
 router.get('/orders/all', requireAdmin, catchErrors(listAllOrders));
 //router.get('/orders', requireAuthentication, catchErrors(getOrders));
 router.get('/products', catchErrors(getProducts));
-router.get('/products/Id', catchErrors(getProductById));
+router.get('/products/:id', catchErrors(getProductById));
 
 module.exports = router;

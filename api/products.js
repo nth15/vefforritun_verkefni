@@ -1,4 +1,7 @@
+const xss = require('xss');
+
 const { query } = require('../utils/db');
+const { isInt } = require('../utils/validation');
 
 async function getProducts(req, res) {
   const products = await query(
@@ -15,20 +18,21 @@ async function getProducts(req, res) {
 }
 
 async function getProductById(req, res) {
-  const id = req;
-  const products = await query(
-    `SELECT
-      title, price, description, category_id
-    FROM
-      products
-    Where id = $1
-    ORDER BY 
-      category_id ASC,
-      title asc`, [id],
-  );
+  const { id } = req.params;
+  if (!isInt(id)) {
+    return res.status(400).json({ error: 'Ekki valid tala' });
+  }
 
-  return res.json(products.rows);
+  const q = `
+  SELECT
+    title, price, description, category_id
+  FROM
+    products
+  WHERE id = $1`;
+  const result = await query(q, [xss(id)]);
+  return res.json(result.rows);
 }
+
 
 module.exports = {
   getProducts,
