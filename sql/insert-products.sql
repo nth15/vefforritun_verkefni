@@ -18,14 +18,14 @@ INSERT INTO
   products
     (id, title, price, description, category_id)
   VALUES
-    (7, 'hawaii ', 1300, 'Sósa, ostur, skinka og anannas', 1);
+    (7, 'Hawaii ', 1300, 'Sósa, ostur, skinka og anannas', 1);
 
 
 INSERT INTO
   products
     (id, title, price, description, category_id)
   VALUES
-    (8, 'Ostborgari ', 1400, 'Kál sósa ostur', 2);
+    (8, 'Ostborgari ', 1400, 'Kál, sósa ostur', 2);
 
 INSERT INTO
   products

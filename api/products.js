@@ -6,7 +6,7 @@ const { isInt } = require('../utils/validation');
 async function getProducts(req, res) {
   const products = await query(
     `SELECT
-      title, price, description, category_id
+      id, title, price, description, category_id
     FROM
       products
     ORDER BY 
