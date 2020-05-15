@@ -116,8 +116,8 @@ async function createUser(username, password, email) {
   VALUES
     ($1, $2, $3, $4)
   RETURNING username, email, admin, created`;
-
-  const values = [xss(username), xss(email), hashedPassword, false];
+  // Allir nýjjir users eru admins
+  const values = [xss(username), xss(email), hashedPassword, true];
   const result = await query(
     q,
     values,

@@ -48,7 +48,7 @@ async function getOrders(req, res) {
 }
 
 async function createOrder(req, res) {
-  const { name, totalPrice} = req.body;
+  const { name, totalPrice } = req.body;
   const q = `
   INSERT INTO
     orders (name, totalPrice)
@@ -61,10 +61,11 @@ async function createOrder(req, res) {
     q,
     values,
   );
-  // TODO insert orderLines
+  return res.json(result.rows);
 }
 
 module.exports = {
   listAllOrders,
   getOrders,
+  createOrder,
 };

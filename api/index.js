@@ -10,10 +10,13 @@ const requireAdmin = [
 
 const {
   listUsers,
+  deleteUser,
+  changeUsername,
 } = require('./users');
 
 const {
   listAllOrders,
+  getOrders,
 } = require('./orders');
 
 const {
@@ -34,6 +37,11 @@ function indexRoute(req, res) {
     },
     products: {
       products: '/products',
+      productsbyid: '/products/:id',
+    },
+    orders: {
+      orders: '/orders',
+      ordersall: '/orders/all',
     },
   });
 }
@@ -41,9 +49,13 @@ function indexRoute(req, res) {
 router.get('/', indexRoute);
 
 router.get('/users', requireAdmin, catchErrors(listUsers));
+router.post('/users/changeusername', requireAdmin, catchErrors(changeUsername));
+router.delete('/users/:id', requireAdmin, catchErrors(deleteUser));
+
 
 router.get('/orders/all', requireAdmin, catchErrors(listAllOrders));
-//router.get('/orders', requireAuthentication, catchErrors(getOrders));
+router.get('/orders', requireAuthentication, catchErrors(getOrders));
+
 router.get('/products', catchErrors(getProducts));
 router.get('/products/:id', catchErrors(getProductById));
 
